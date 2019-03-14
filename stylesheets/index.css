@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'Aquiline';
+  src: url('Aquiline.ttf');
+}
+
+/* html, body {
+  height: 100%;
+} */
+
+html {
+  background: linear-gradient(rgba(201, 131, 18, 0.5), rgba(163, 106, 14, 0.7)),url(../images/old-parchment-paper.jpg);
+  /* background-image: url(../images/old-parchment-paper.jpg); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  color: rgb(43, 14, 14);
+}
+
+h1 {
+  margin-top: -20px;;
+  font-family: 'Aquiline', cursive;
+  font-size: 35px;
+}
+.title-h {
+  margin-right: -20px;
+}
