@@ -1,4 +1,5 @@
 const path = require('path');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -25,5 +26,12 @@ module.exports = {
   devtool: 'source-map',
   resolve: {
     extensions: ['.js', '.jsx', '*']
-  }
+  },
+  plugins: [
+    new HTMLWebpackPlugin({
+      title: "Homenum Revelio",
+      filename: "index.html",
+      template: "src/index.html"
+    })
+  ]
 }
