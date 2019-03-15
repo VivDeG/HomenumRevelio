@@ -31,7 +31,7 @@ module.exports = {
     new HTMLWebpackPlugin({
       title: "Homenum Revelio",
       filename: "index.html",
-      template: "src/index.html"
+      template: "./index.html"
     })
   ]
 }
