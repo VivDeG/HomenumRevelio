@@ -6,6 +6,9 @@ class Square {
     this.xPos = x * SIZE;
     this.yPos = y * SIZE;
     this.open = false;
+    this.flagged = false;
+    this.flag = new Image();
+    // this.flag.src = '../images/ravenclaw_banner.png';
   }
 
   draw(c) {
@@ -13,7 +16,6 @@ class Square {
     c.fillRect(this.xPos, this.yPos, SIZE, SIZE);
     c.strokeStyle = "rgb(69, 18, 1)";
     c.strokeRect(this.xPos, this.yPos, SIZE, SIZE);
-    // requestAnimationFrame(this.revealSquare(c));
   }
 
   clicked(x, y, c) {
@@ -29,26 +31,45 @@ class Square {
   revealSquare(c) {
     /* non-animated opening of square */
     // c.clearRect(this.xPos, this.yPos, SIZE, SIZE);
-    // // let img = new Image();
-    // // img.src = '../images/footprints.png';
+  
     // c.fillStyle ="rgb(200, 158, 89)";
     // c.fillRect(this.xPos, this.yPos, SIZE, SIZE);
     // c.strokeStyle = "rgb(69, 18, 1)";
     // c.strokeRect(this.xPos, this.yPos, SIZE, SIZE);
 
+
     this.left = this.xPos + 15;
     this.right = this.xPos + 15;
-    window.requestAnimationFrame(() => this.revealSquareAnimate(c));
+    window.requestAnimationFrame(() => this.animateOpen(c));
     this.open = true;
   }
 
+  toggleFlag(c) {
+    if (this.flagged) {
+      c.clearRect(this.xPos, this.yPos, SIZE, SIZE);
 
+      c.fillStyle = "rgb(229, 199, 160)";
+      c.fillRect(this.xPos, this.yPos, SIZE, SIZE);
+      c.strokeStyle = "rgb(69, 18, 1)";
+      c.strokeRect(this.xPos, this.yPos, SIZE, SIZE);
+
+      this.flagged = false;
+    } else {
+      const banners = ['../images/slytherin_banner.png',
+                    '../images/ravenclaw_banner.png',
+                    '../images/hufflepuff_banner.png',
+                    '../images/gryffindor_banner.png'];
+      this.flag.src = banners[Math.floor(Math.random() * banners.length)];
+      c.drawImage(this.flag, this.xPos + 5, this.yPos + 3, SIZE - 10, SIZE - 6);
+      this.flagged = true;
+    }
+  }
 
   
-  revealSquareAnimate(c) {
+  animateOpen(c) {
 
     if (this.right <= this.xPos + SIZE) {
-      window.requestAnimationFrame(() => this.revealSquareAnimate(c));
+      window.requestAnimationFrame(() => this.animateOpen(c));
       c.clearRect(this.xPos, this.yPos, SIZE, SIZE);
 
       // c.fillStyle = "rgb(200, 158, 89)";
@@ -57,7 +78,7 @@ class Square {
       c.strokeRect(this.xPos, this.yPos, SIZE, SIZE);
 
       // will be actual content of square
-      // c.drawImage(img,30,30,30,30);
+      // c.drawImage(this.img, this.xPos, this.yPos, SIZE, SIZE);
 
       c.fillStyle = "rgb(229, 199, 160)";
       c.fillRect(this.right, this.yPos, this.xPos + SIZE - this.right, SIZE);
