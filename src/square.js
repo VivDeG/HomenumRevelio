@@ -27,6 +27,7 @@ class Square {
   }
   
   revealSquare(c) {
+    /* non-animated opening of square */
     // c.clearRect(this.xPos, this.yPos, SIZE, SIZE);
     // // let img = new Image();
     // // img.src = '../images/footprints.png';
@@ -49,7 +50,7 @@ class Square {
     if (this.right <= this.xPos + SIZE) {
       window.requestAnimationFrame(() => this.revealSquareAnimate(c));
       c.clearRect(this.xPos, this.yPos, SIZE, SIZE);
-// debugger;
+
       // c.fillStyle = "rgb(200, 158, 89)";
       // c.fillRect(this.xPos, this.yPos, SIZE, SIZE);
       c.strokeStyle = "rgb(69, 18, 1)";
