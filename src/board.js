@@ -22,7 +22,8 @@ class Board {
 
   findClickedSquare(x,y,e) {
     this.grid.forEach(square => {
-      if (square.clicked(x, y, this.c)) {
+      // also check if square is open
+      if (square.clicked(x, y, this.c) && !square.open) {
         square.revealSquare(this.c);
       }
     });
