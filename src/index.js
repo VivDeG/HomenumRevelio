@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const x = e.pageX - canvas.offsetLeft;
     const y = e.pageY - canvas.offsetTop;
     let button;
-    if (e.shiftKey) {
+    if (e.altKey || e.shiftKey || e.ctrlKey || e.metaKey) {
       button = RIGHT_CLICK;
     } else {
       button = LEFT_CLICK;
