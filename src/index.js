@@ -13,21 +13,22 @@ document.addEventListener("DOMContentLoaded", () => {
   canvas.addEventListener('click', (e) => {
     const x = e.pageX - canvas.offsetLeft;
     const y = e.pageY - canvas.offsetTop;
-    const button = LEFT_CLICK;
+    let button;
+    if (e.shiftKey) {
+      button = RIGHT_CLICK;
+    } else {
+      button = LEFT_CLICK;
+    }
     board.findClickedSquare(x,y,button,c);
   }, false);
-
-  window.oncontextmenu = (e) => {
-    e.preventDefault();
-  }
   
-  canvas.addEventListener('contextmenu', (e) => {
-    e.preventDefault();
-    const x = e.pageX - canvas.offsetLeft;
-    const y = e.pageY - canvas.offsetTop;
-    const button = RIGHT_CLICK;
-    board.findClickedSquare(x,y,button,c);
-  }, false);
+  // canvas.addEventListener('contextmenu', (e) => {
+  //   e.preventDefault();
+  //   const x = e.pageX - canvas.offsetLeft;
+  //   const y = e.pageY - canvas.offsetTop;
+  //   const button = RIGHT_CLICK;
+  //   board.findClickedSquare(x,y,button,c);
+  // }, false);
 
   
 });
