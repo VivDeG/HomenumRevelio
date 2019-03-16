@@ -16,6 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const button = LEFT_CLICK;
     board.findClickedSquare(x,y,button,c);
   }, false);
+
+  window.oncontextmenu = (e) => {
+    e.preventDefault();
+  }
   
   canvas.addEventListener('contextmenu', (e) => {
     e.preventDefault();
