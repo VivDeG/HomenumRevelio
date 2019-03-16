@@ -10,6 +10,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const board = new Board();
   board.draw(c);
 
+  window.oncontextmenu = (e) => {
+    e.preventDefault();
+    const x = e.pageX - canvas.offsetLeft;
+    const y = e.pageY - canvas.offsetTop;
+    const button = RIGHT_CLICK;
+    board.findClickedSquare(x,y,button,c);
+  }
+
   canvas.addEventListener('click', (e) => {
     const x = e.pageX - canvas.offsetLeft;
     const y = e.pageY - canvas.offsetTop;
