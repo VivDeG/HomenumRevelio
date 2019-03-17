@@ -1,45 +1,20 @@
-const Board = require('./board');
-import { LEFT_CLICK, RIGHT_CLICK } from './board';
+import Game from './game';
 
 document.addEventListener("DOMContentLoaded", () => {
-  let canvas = document.getElementById('canvas');
+  const canvas = document.getElementById('canvas');
   canvas.width = 480;
   canvas.height = 480;
-  let c = canvas.getContext('2d');
+  const c = canvas.getContext('2d');
 
-  const board = new Board();
-  board.draw(c);
-
-  let x, y;
-
-  canvas.addEventListener('mousemove', e => {
-    x = e.pageX - canvas.offsetLeft;
-    y = e.pageY - canvas.offsetTop;
-  });
+  const game = new Game();
+  game.draw(c);
 
   canvas.addEventListener('click', (e) => {
-    let button;
-    if (e.altKey || e.shiftKey || e.ctrlKey || e.metaKey) {
-      button = RIGHT_CLICK;
-    } else {
-      button = LEFT_CLICK;
-    }
-    board.findClickedSquare(x,y,button,c);
-  }, false);
-  
-  window.addEventListener('keypress', e => {
-    e.preventDefault();
-    if (e.key == 'f' || e.key == 'F') {
-      const button = RIGHT_CLICK;
-      board.findClickedSquare(x,y,button,c);
-    }
+    game.handleEvent(e,canvas,c);
   }, false);
   
   canvas.addEventListener('contextmenu', (e) => {
     e.preventDefault();
-    const button = RIGHT_CLICK;
-    board.findClickedSquare(x,y,button,c);
-  }, false);
-
-  
+    game.handleEvent(e, canvas, c);
+  }, false);  
 });

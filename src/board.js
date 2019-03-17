@@ -1,8 +1,8 @@
-const Square = require('./square');
-const LEFT_CLICK = 0;
-const RIGHT_CLICK = 2;
+import Square from './square';
+export const LEFT_CLICK = 0;
+export const RIGHT_CLICK = 2;
 
-class Board {
+export class Board {
   constructor() {
     this.grid = [];
 
@@ -33,7 +33,3 @@ class Board {
     });
   }
 }
-
-module.exports = Board;
-module.exports.LEFT_CLICK = LEFT_CLICK;
-module.exports.RIGHT_CLICK = RIGHT_CLICK;
