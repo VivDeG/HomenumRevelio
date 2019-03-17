@@ -7,8 +7,17 @@ class Square {
     this.yPos = y * SIZE;
     this.open = false;
     this.flagged = false;
-    this.flag = new Image();
-    // this.flag.src = '../images/ravenclaw_banner.png';
+
+    this.img1 = new Image();
+    this.img1.src = '../images/slytherin_banner.png';
+    this.img2 = new Image();
+    this.img2.src = '../images/ravenclaw_banner.png';
+    this.img3 = new Image();
+    this.img3.src = '../images/hufflepuff_banner.png';
+    this.img4 = new Image();
+    this.img4.src = '../images/gryffindor_banner.png';
+
+    this.banners = [this.img1, this.img2, this.img3, this.img4];
   }
 
   draw(c) {
@@ -55,11 +64,7 @@ class Square {
 
       this.flagged = false;
     } else {
-      const banners = ['../images/slytherin_banner.png',
-                    '../images/ravenclaw_banner.png',
-                    '../images/hufflepuff_banner.png',
-                    '../images/gryffindor_banner.png'];
-      this.flag.src = banners[Math.floor(Math.random() * banners.length)];
+      this.flag = this.banners[Math.floor(Math.random() * this.banners.length)];
       c.drawImage(this.flag, this.xPos + 5, this.yPos + 3, SIZE - 10, SIZE - 6);
       this.flagged = true;
     }
