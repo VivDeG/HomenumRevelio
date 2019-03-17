@@ -10,17 +10,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const board = new Board();
   board.draw(c);
 
-  window.oncontextmenu = (e) => {
-    e.preventDefault();
-    const x = e.pageX - canvas.offsetLeft;
-    const y = e.pageY - canvas.offsetTop;
-    const button = RIGHT_CLICK;
-    board.findClickedSquare(x,y,button,c);
-  }
+  let x, y;
+
+  canvas.addEventListener('mousemove', e => {
+    x = e.pageX - canvas.offsetLeft;
+    y = e.pageY - canvas.offsetTop;
+  });
 
   canvas.addEventListener('click', (e) => {
-    const x = e.pageX - canvas.offsetLeft;
-    const y = e.pageY - canvas.offsetTop;
+    console.log(`${x}, ${y}`);
     let button;
     if (e.altKey || e.shiftKey || e.ctrlKey || e.metaKey) {
       button = RIGHT_CLICK;
@@ -28,6 +26,14 @@ document.addEventListener("DOMContentLoaded", () => {
       button = LEFT_CLICK;
     }
     board.findClickedSquare(x,y,button,c);
+  }, false);
+  
+  window.addEventListener('keypress', e => {
+    e.preventDefault();
+    if (e.key == 'f' || e.key == 'F') {
+      const button = RIGHT_CLICK;
+      board.findClickedSquare(x,y,button,c);
+    }
   }, false);
   
   // canvas.addEventListener('contextmenu', (e) => {
