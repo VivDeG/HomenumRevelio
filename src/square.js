@@ -9,13 +9,13 @@ class Square {
     this.flagged = false;
 
     this.img1 = new Image();
-    this.img1.src = '../images/slytherin_banner.png';
+    this.img1.src = 'images/slytherin_banner.png';
     this.img2 = new Image();
-    this.img2.src = '../images/ravenclaw_banner.png';
+    this.img2.src = 'images/ravenclaw_banner.png';
     this.img3 = new Image();
-    this.img3.src = '../images/hufflepuff_banner.png';
+    this.img3.src = 'images/hufflepuff_banner.png';
     this.img4 = new Image();
-    this.img4.src = '../images/gryffindor_banner.png';
+    this.img4.src = 'images/gryffindor_banner.png';
 
     this.banners = [this.img1, this.img2, this.img3, this.img4];
   }
