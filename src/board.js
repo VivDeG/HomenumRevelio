@@ -9,6 +9,7 @@ export class Board {
   constructor() {
     this.grid = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
     this.mines = [];
+    this.squaresOpen = 0;
   }
 
   draw(c) {
@@ -74,6 +75,7 @@ export class Board {
         if (square.clicked(x, y, c) && !square.open) {
           if (button == LEFT_CLICK && !square.flagged) {
             square.revealSquare(c);
+            this.squaresOpen++;
 
             if (square.hasMine()) {
               clickedMine = true;
@@ -99,11 +101,12 @@ export class Board {
 
         if (!square.open && !square.flagged) {
           square.revealSquare(c);
+          this.squaresOpen++;
           if (square.value == 0) {
             this.openAdjacents(x + adj[0], y + adj[1], c);
           }
         }
-        
+
       }
     });
   }

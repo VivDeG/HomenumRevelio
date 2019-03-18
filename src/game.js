@@ -20,12 +20,21 @@ class Game {
       button = RIGHT_CLICK;
     }
     this.gameOver = this.board.findClickedSquare(x, y, button, c);
-    if (this.gameOver) this.endGame(c);
+    if (this.gameOver) {
+      this.lostGame(c);
+    } else if (this.board.squaresOpen == 256 - 40) {
+      this.wonGame();
+    }
   }
   
-  endGame(c) {
+  lostGame(c) {
     this.board.revealMines(c);
     this.board.setSquaresOpen();
+    setTimeout(() => alert("Sorry, you lost. :("), 4000);
+  }
+
+  wonGame() {
+    alert("Congratulations! You won!");
   }
 }
 
