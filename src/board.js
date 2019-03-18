@@ -9,7 +9,7 @@ export class Board {
   }
 
   draw(c) {
-    this.placeMines();
+    // this.placeMines();
 
     for (let i = 0; i < 256; i++) {
       const x = i % 16;
