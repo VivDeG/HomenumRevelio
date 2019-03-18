@@ -26,12 +26,15 @@ The player can mark off unclicked squares with House banners, and those squares 
 Day 1:
 + Review games from instructional curriculum
 + Build project skeleton and functionality
+  
 Day 2:
 + Complete board design and rendering
 + Add animations
+  
 Day 3:
 + Determine conditional logic for clicking on a square
 + Add placement of Death Eaters and getting value of a square
+  
 Day 4:
 + Complete logic for auto-clicking around square with no Death Eater or adjacent Death Eater
 + Complete MVPs
