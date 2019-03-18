@@ -90,9 +90,9 @@ class Square {
       c.strokeRect(this.xPos, this.yPos, SIZE, SIZE);
 
       // will be actual content of square
-      // if (this.hasMine) {
-      //   c.drawImage(this.deathEater, this.xPos + 5, this.yPos + 2, SIZE - 10, SIZE - 4);
-      // }
+      if (this.hasMine) {
+        c.drawImage(this.deathEater, this.xPos + 5, this.yPos + 2, SIZE - 10, SIZE - 4);
+      }
 
       c.fillStyle = "rgb(229, 199, 160)";
       c.fillRect(this.right, this.yPos, this.xPos + SIZE - this.right, SIZE);

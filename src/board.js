@@ -4,35 +4,37 @@ export const RIGHT_CLICK = 2;
 
 export class Board {
   constructor() {
-    // this.grid = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
-    this.grid = [];
+    console.log("board initialize");
+    this.grid = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
     this.mines = [];
   }
 
   draw(c) {
-    // this.placeMines();
+    console.log("board draw");
+    this.placeMines();
 
     for (let i = 0; i < 256; i++) {
       const x = i % 16;
       const y = Math.floor(i / 16);
 
       let hasMine = false;
-      // for (let j = 0; j < this.mines.length; j++) {
-      //   if (this.mines[j][0] == x && this.mines[j][1] == y) {
-      //     hasMine = true;
-      //     break;
-      //   }
-      // }
+      for (let j = 0; j < this.mines.length; j++) {
+        if (this.mines[j][0] == x && this.mines[j][1] == y) {
+          hasMine = true;
+          break;
+        }
+      }
 
-      this.grid.push(new Square(x, y, hasMine));
+      this.grid[x][y] = (new Square(x, y, hasMine));
     }
-    
+
+    console.log("before drawing squares");
     for (let i = 0; i < this.grid.length; i++) {
-      // for (let j = 0; j < this.grid.length; j++) {
-        // this.grid[i][j].draw(c);
-        this.grid[i].draw(c);
-      // }
+      for (let j = 0; j < this.grid.length; j++) {
+        this.grid[i][j].draw(c);
+      }
     }
+    console.log("after drawing squares");
   }
 
   placeMines() {
@@ -54,9 +56,8 @@ export class Board {
 
   findClickedSquare(x,y,button,c) {
     let clickedMine = false;
-    // this.grid.forEach(row => {
-    this.grid.forEach(square => {
-      // row.forEach(square => {
+    this.grid.forEach(row => {
+      row.forEach(square => {
         if (square.clicked(x, y, c) && !square.open) {
           if (button == LEFT_CLICK && !square.flagged) {
             square.revealSquare(c);
@@ -68,8 +69,7 @@ export class Board {
             square.toggleFlag(c);
           }
         }
-      // });
-    // });
+      });
     });
     return clickedMine;
   }
@@ -79,7 +79,6 @@ export class Board {
     this.mines.forEach(mine => {
       const x = mine[0], y = mine[1];
       if (!this.grid[x][y].open) {
-        console.log(`${x}, ${y}`);
         setTimeout(() => this.grid[x][y].revealSquare(c), 100 + offset);
         offset += 100;
       }

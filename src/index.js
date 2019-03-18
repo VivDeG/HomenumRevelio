@@ -1,5 +1,4 @@
 import Game from './game';
-import {Board} from './board';
 
 document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById('canvas');
@@ -8,8 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const c = canvas.getContext('2d');
 
   const game = new Game();
-  const board = new Board();
-  board.draw(c);
+  console.log("after game initialize");
+  game.draw(c);
 
   canvas.addEventListener('click', (e) => {
     game.handleEvent(e, canvas, c);
