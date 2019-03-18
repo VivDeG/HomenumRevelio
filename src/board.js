@@ -38,12 +38,15 @@ export class Board {
     while (this.mines.length < 40) {
       let x = Math.floor(Math.random() * 16), y = Math.floor(Math.random() * 16);
 
+      let filled = false;
       for (let i = 0; i < this.mines.length; i++) {
         if (this.mines[i][0] == x && this.mines[i][1] == y) {
-          continue;
+          filled = true;
+          break;
         }
       }
-      this.mines.push([x, y]);
+
+      if (!filled) this.mines.push([x, y]);
     }
   }
 
@@ -72,6 +75,7 @@ export class Board {
     this.mines.forEach(mine => {
       const x = mine[0], y = mine[1];
       if (!this.grid[x][y].open) {
+        console.log(`${x}, ${y}`);
         setTimeout(() => this.grid[x][y].revealSquare(c), 100 + offset);
         offset += 100;
       }
