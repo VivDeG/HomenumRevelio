@@ -2,10 +2,10 @@
 const SIZE = 30;
 
 class Square {
-  constructor(x, y, hasMine) {
+  constructor(x, y, value) {
     this.xPos = x * SIZE;
     this.yPos = y * SIZE;
-    this.hasMine = hasMine;
+    this.value = value;
     this.open = false;
     this.flagged = false;
 
@@ -49,7 +49,7 @@ class Square {
     // c.strokeStyle = "rgb(69, 18, 1)";
     // c.strokeRect(this.xPos, this.yPos, SIZE, SIZE);
 
-
+console.log(this.value);
     this.left = this.xPos + 15;
     this.right = this.xPos + 15;
     window.requestAnimationFrame(() => this.animateOpen(c));
@@ -77,6 +77,10 @@ class Square {
     this.open = true;
   }
 
+  hasMine() {
+    return this.value == -1;
+  }
+
   
   animateOpen(c) {
 
@@ -90,7 +94,7 @@ class Square {
       c.strokeRect(this.xPos, this.yPos, SIZE, SIZE);
 
       // will be actual content of square
-      if (this.hasMine) {
+      if (this.hasMine()) {
         c.drawImage(this.deathEater, this.xPos + 5, this.yPos + 2, SIZE - 10, SIZE - 4);
       }
 

@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const c = canvas.getContext('2d');
 
   const game = new Game();
-  console.log("after game initialize");
   game.draw(c);
 
   canvas.addEventListener('click', (e) => {

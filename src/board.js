@@ -1,44 +1,36 @@
 import Square from './square';
 export const LEFT_CLICK = 0;
 export const RIGHT_CLICK = 2;
+const ADJACENTS = [[-1, -1], [0, -1], [1, -1],
+                    [-1, 0], [1, 0],
+                    [-1, 1], [0, 1], [1,1]];
 
 export class Board {
   constructor() {
-    console.log("board initialize");
     this.grid = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
     this.mines = [];
   }
 
   draw(c) {
-    console.log("board draw");
     this.placeMines();
 
     for (let i = 0; i < 256; i++) {
       const x = i % 16;
       const y = Math.floor(i / 16);
-
-      let hasMine = false;
-      for (let j = 0; j < this.mines.length; j++) {
-        if (this.mines[j][0] == x && this.mines[j][1] == y) {
-          hasMine = true;
-          break;
-        }
+      if (!this.grid[x][y]){
+        const value = this.getValue(x, y);
+        this.grid[x][y] = (new Square(x, y, value));
       }
-
-      this.grid[x][y] = (new Square(x, y, hasMine));
     }
-
-    console.log("before drawing squares");
+    
     for (let i = 0; i < this.grid.length; i++) {
       for (let j = 0; j < this.grid.length; j++) {
         this.grid[i][j].draw(c);
       }
     }
-    console.log("after drawing squares");
   }
 
   placeMines() {
-    this.mines = [[0,0],[1,0],[2,0],[3,0],[4,0]];
     while (this.mines.length < 40) {
       let x = Math.floor(Math.random() * 16), y = Math.floor(Math.random() * 16);
 
@@ -50,8 +42,28 @@ export class Board {
         }
       }
 
-      if (!filled) this.mines.push([x, y]);
+      if (!filled) {
+        this.mines.push([x, y]);
+        this.grid[x][y] = new Square(x, y, -1);
+      }
     }
+    console.log(this.mines);
+  }
+
+  getValue(x,y) {
+    let value = 0;
+    ADJACENTS.forEach(adj => {
+      if (this.validPos(x + adj[0], y + adj[1])) {
+        const square = this.grid[x + adj[0]][y + adj[1]];
+        if (square && square.value == -1) value++;
+      }
+    });
+    return value;
+  }
+
+  validPos(x,y) {
+    if (x >= 0 && x < 16 && y >= 0 && y < 16) return true;
+    return false;
   }
 
   findClickedSquare(x,y,button,c) {
@@ -61,7 +73,7 @@ export class Board {
         if (square.clicked(x, y, c) && !square.open) {
           if (button == LEFT_CLICK && !square.flagged) {
             square.revealSquare(c);
-            if (square.hasMine) {
+            if (square.hasMine()) {
               clickedMine = true;
             }
           }
@@ -78,7 +90,7 @@ export class Board {
     let offset = 0;
     this.mines.forEach(mine => {
       const x = mine[0], y = mine[1];
-      if (!this.grid[x][y].open) {
+      if (!this.grid[x][y].open && !this.grid[x][y].flagged) {
         setTimeout(() => this.grid[x][y].revealSquare(c), 100 + offset);
         offset += 100;
       }

@@ -2,13 +2,11 @@ import { Board, LEFT_CLICK, RIGHT_CLICK } from './board';
 
 class Game {
   constructor() {
-    console.log("game initialize");
     this.board = new Board();
     this.gameOver = false;
   }
 
   draw(c) {
-    console.log("game draw");
     this.board.draw(c);
   }
 
