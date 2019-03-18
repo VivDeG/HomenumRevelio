@@ -2,9 +2,10 @@
 const SIZE = 30;
 
 class Square {
-  constructor(x, y) {
+  constructor(x, y, hasMine) {
     this.xPos = x * SIZE;
     this.yPos = y * SIZE;
+    this.hasMine = hasMine;
     this.open = false;
     this.flagged = false;
 
@@ -16,8 +17,10 @@ class Square {
     this.img3.src = 'images/hufflepuff_banner.png';
     this.img4 = new Image();
     this.img4.src = 'images/gryffindor_banner.png';
-
     this.banners = [this.img1, this.img2, this.img3, this.img4];
+
+    this.deathEater = new Image();
+    this.deathEater.src = 'images/death_eater.png';
   }
 
   draw(c) {
@@ -34,7 +37,7 @@ class Square {
     c.lineTo(this.xPos + SIZE - 1, this.yPos + SIZE - 1);
     c.lineTo(this.xPos + 1, this.yPos + SIZE - 1);
     c.closePath();
-    return c.isPointInPath(x,y);
+    return c.isPointInPath(x, y);
   }
   
   revealSquare(c) {
@@ -65,7 +68,7 @@ class Square {
       this.flagged = false;
     } else {
       this.flag = this.banners[Math.floor(Math.random() * this.banners.length)];
-      c.drawImage(this.flag, this.xPos + 5, this.yPos + 3, SIZE - 10, SIZE - 6);
+      c.drawImage(this.flag, this.xPos + 5, this.yPos + 2, SIZE - 10, SIZE - 4);
       this.flagged = true;
     }
   }
@@ -83,7 +86,9 @@ class Square {
       c.strokeRect(this.xPos, this.yPos, SIZE, SIZE);
 
       // will be actual content of square
-      // c.drawImage(this.img, this.xPos, this.yPos, SIZE, SIZE);
+      if (this.hasMine) {
+        c.drawImage(this.deathEater, this.xPos + 5, this.yPos + 2, SIZE - 10, SIZE - 4);
+      }
 
       c.fillStyle = "rgb(229, 199, 160)";
       c.fillRect(this.right, this.yPos, this.xPos + SIZE - this.right, SIZE);

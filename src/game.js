@@ -20,6 +20,10 @@ class Game {
     }
     this.board.findClickedSquare(x, y, button, c);
   }
+  
+  gameOver(c) {
+    this.board.revealMines(c);
+  }
 }
 
 export default Game;
