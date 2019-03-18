@@ -73,6 +73,10 @@ class Square {
     }
   }
 
+  setOpen() {
+    this.open = true;
+  }
+
   
   animateOpen(c) {
 

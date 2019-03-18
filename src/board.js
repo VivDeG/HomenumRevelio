@@ -34,6 +34,7 @@ export class Board {
   }
 
   placeMines() {
+    this.mines = [[0,0],[1,0],[2,0],[3,0],[4,0]];
     while (this.mines.length < 40) {
       let x = Math.floor(Math.random() * 16), y = Math.floor(Math.random() * 16);
 
@@ -43,21 +44,27 @@ export class Board {
         }
       }
       this.mines.push([x, y]);
-      // console.log(pos);
     }
   }
 
   findClickedSquare(x,y,button,c) {
-    this.grid.forEach(square => {
-      if (square.clicked(x, y, c) && !square.open) {
-        if (button == LEFT_CLICK && !square.flagged) {
-          square.revealSquare(c);
+    let clickedMine = false;
+    this.grid.forEach(row => {
+      row.forEach(square => {
+        if (square.clicked(x, y, c) && !square.open) {
+          if (button == LEFT_CLICK && !square.flagged) {
+            square.revealSquare(c);
+            if (square.hasMine) {
+              clickedMine = true;
+            }
+          }
+          else if (button == RIGHT_CLICK) {
+            square.toggleFlag(c);
+          }
         }
-        else if (button == RIGHT_CLICK) {
-          square.toggleFlag(c);
-        }
-      }
+      });
     });
+    return clickedMine;
   }
 
   revealMines(c) {
@@ -65,9 +72,17 @@ export class Board {
     this.mines.forEach(mine => {
       const x = mine[0], y = mine[1];
       if (!this.grid[x][y].open) {
-        setTimeout(() => this.grid[x][y].revealSquare(c), 200 + offset);
-        offset += 200;
+        setTimeout(() => this.grid[x][y].revealSquare(c), 100 + offset);
+        offset += 100;
       }
+    });
+  }
+
+  setSquaresOpen() {
+    this.grid.forEach(row => {
+      row.forEach(square => {
+        if (!square.open) square.setOpen();
+      });
     });
   }
 }

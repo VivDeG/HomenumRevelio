@@ -3,6 +3,7 @@ import { Board, LEFT_CLICK, RIGHT_CLICK } from './board';
 class Game {
   constructor() {
     this.board = new Board();
+    this.gameOver = false;
   }
 
   draw(c) {
@@ -18,11 +19,13 @@ class Game {
     } else {
       button = RIGHT_CLICK;
     }
-    this.board.findClickedSquare(x, y, button, c);
+    this.gameOver = this.board.findClickedSquare(x, y, button, c);
+    if (this.gameOver) this.endGame(c);
   }
   
-  gameOver(c) {
+  endGame(c) {
     this.board.revealMines(c);
+    this.board.setSquaresOpen();
   }
 }
 

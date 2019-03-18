@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const game = new Game();
   game.draw(c);
-  game.gameOver(c);
 
   canvas.addEventListener('click', (e) => {
     game.handleEvent(e, canvas, c);
