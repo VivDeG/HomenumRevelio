@@ -48,7 +48,6 @@ export class Board {
         this.grid[x][y] = new Square(x, y, -1);
       }
     }
-    console.log(this.mines);
   }
 
   getValue(x,y) {
