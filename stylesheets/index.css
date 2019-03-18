@@ -3,6 +3,11 @@
   src: url('Aquiline.ttf');
 }
 
+@font-face {
+  font-family: 'AnimalesFantastic';
+  src: url('AnimalesFantastic.otf');
+}
+
 /* html, body {
   height: 100%;
 } */

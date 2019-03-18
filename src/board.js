@@ -68,22 +68,44 @@ export class Board {
 
   findClickedSquare(x,y,button,c) {
     let clickedMine = false;
-    this.grid.forEach(row => {
-      row.forEach(square => {
+    this.grid.forEach((row, i) => {
+      row.forEach((square, j) => {
+
         if (square.clicked(x, y, c) && !square.open) {
           if (button == LEFT_CLICK && !square.flagged) {
             square.revealSquare(c);
+
             if (square.hasMine()) {
               clickedMine = true;
+            } else if (square.value == 0) {
+              this.openAdjacents(i, j, c);
             }
+
           }
           else if (button == RIGHT_CLICK) {
             square.toggleFlag(c);
           }
         }
+
       });
     });
     return clickedMine;
+  }
+
+  openAdjacents(x,y,c) {
+    ADJACENTS.forEach(adj => {
+      if (this.validPos(x + adj[0], y + adj[1])) {
+        const square = this.grid[x + adj[0]][y + adj[1]];
+
+        if (!square.open && !square.flagged) {
+          square.revealSquare(c);
+          if (square.value == 0) {
+            this.openAdjacents(x + adj[0], y + adj[1], c);
+          }
+        }
+        
+      }
+    });
   }
 
   revealMines(c) {

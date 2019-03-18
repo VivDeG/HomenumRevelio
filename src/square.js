@@ -1,5 +1,6 @@
-
 const SIZE = 30;
+const VALUES = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+const f = new FontFace('AnimalesFantastic', 'url(/stylesheets/AnimalesFantastic.otf)');
 
 class Square {
   constructor(x, y, value) {
@@ -49,7 +50,7 @@ class Square {
     // c.strokeStyle = "rgb(69, 18, 1)";
     // c.strokeRect(this.xPos, this.yPos, SIZE, SIZE);
 
-console.log(this.value);
+
     this.left = this.xPos + 15;
     this.right = this.xPos + 15;
     window.requestAnimationFrame(() => this.animateOpen(c));
@@ -96,6 +97,10 @@ console.log(this.value);
       // will be actual content of square
       if (this.hasMine()) {
         c.drawImage(this.deathEater, this.xPos + 5, this.yPos + 2, SIZE - 10, SIZE - 4);
+      } else if (this.value > 0) {
+        c.font = "25px AnimalesFantastic";
+        c.fillStyle = "rgb(69, 18, 1)";
+        c.fillText(VALUES[this.value], this.xPos + 10, this.yPos + 25);
       }
 
       c.fillStyle = "rgb(229, 199, 160)";
