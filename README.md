@@ -1,4 +1,6 @@
 # HomenumRevelio
+[Live Demo](https://vivdeg.github.io/HomenumRevelio/)
+
 Homenum Revelio is a Harry Potter themed minesweeper game, where instead of mines, there are Death Eaters.  
   
 When a player first clicks on a square in the grid, it will show the number of Death Eaters adjacent to that square. If it has no adjacent Death Eaters, all squares around it up to any ones that have Death Eaters adjacent to them will appear clicked. If a player clicks on a square with a Death Eater, then the player loses.  
