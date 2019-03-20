@@ -13,7 +13,7 @@ The player can mark off unclicked squares with House banners, and those squares 
 + HTML5 Canvas for rendering game
 + CSS for styling webpage
 
-## Functionality and MVP Features
+## Features
 + When a square is clicked on, it either shows a number, a Death Eater, or opens the squares around it.
 + When a player right clicks on a square, a banner is placed there and the square is unclickable.
 + When a player clicks on a square with a Death Eater, the game ends and the player loses.
