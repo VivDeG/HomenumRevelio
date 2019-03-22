@@ -34,7 +34,8 @@ class Game {
   }
 
   wonGame() {
-    alert("Congratulations! You won!");
+    this.board.setSquaresOpen();
+    setTimeout(() => alert("Congratulations! You won!"), 300);
   }
 }
 
