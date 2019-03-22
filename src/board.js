@@ -119,6 +119,7 @@ export class Board {
         offset += 100;
       }
     });
+    return offset;
   }
 
   setSquaresOpen() {
