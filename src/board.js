@@ -128,5 +128,6 @@ export class Board {
         if (!square.open) square.setOpen();
       });
     });
+    this.squaresOpen = 256;
   }
 }

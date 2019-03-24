@@ -29,8 +29,8 @@ class Game {
   
   lostGame(c) {
     let waitTime = this.board.revealMines(c);
-    setTimeout(() => alert("Sorry, you lost. :("), waitTime + 260);
     this.board.setSquaresOpen();
+    setTimeout(() => alert("Sorry, you lost. :("), waitTime + 300);
   }
 
   wonGame() {
