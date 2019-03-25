@@ -89,7 +89,7 @@ class Square {
       window.requestAnimationFrame(() => this.animateOpen(c));
       c.clearRect(this.xPos, this.yPos, SIZE, SIZE);
 
-      c.fillStyle = "rgba(200, 158, 89, 0.5)";
+      c.fillStyle = "rgba(229, 199, 160, 0.45)";
       c.fillRect(this.xPos, this.yPos, SIZE, SIZE);
       c.strokeStyle = "rgb(69, 18, 1)";
       c.strokeRect(this.xPos, this.yPos, SIZE, SIZE);
