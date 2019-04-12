@@ -23,7 +23,7 @@ html {
 .title {
   display: flex;
   justify-content: center;
-  color: rgb(43, 14, 14);
+  color: rgb(80, 26, 20);
 }
 
 h1 {
@@ -44,3 +44,54 @@ h1 {
 #canvas {
   border: 1px solid rgb(69, 18, 1);
 }
+
+.instructions {
+  background: linear-gradient(rgba(229, 199, 160, 0.4), rgba(207, 170, 121, 0.45));
+  width: 400px;
+  margin: 0 20px;
+  padding: 10px;
+  font-family: 'AnimalesFantastic', fantasy;
+  font-size: 14px;
+  color: rgb(80, 26, 20);
+  border: 2px solid rgb(80, 26, 20);
+}
+
+.instructions h3 {
+  /* margin: 10px 0; */
+  font-size: 20px;
+}
+
+.line-1, .line-2, .line-3, .line-4, .line-5, .line-6 {
+  margin: 15px 0;
+}
+
+.line-2, .line-4 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.line-2-text {
+  width: 275px;
+}
+
+.number {
+  font-size: 35px;
+}
+
+.death-eater {
+  margin-right: 10px;
+  height: 40px;
+  width: auto;
+}
+
+.line-4-text {
+  width: 300px;
+}
+
+.place-banners {
+  margin-right: 10px;
+  height: 70px;
+  width: auto;
+}
+

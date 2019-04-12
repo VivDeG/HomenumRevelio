@@ -5,7 +5,7 @@
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
 
-    <script type="text/javascript" src="bundle.js"></script>
+    <!-- <script type="text/javascript" src="bundle.js"></script> -->
 
     <link rel="shortcut icon" type="image/png" href="./images/homenum_revelio_logo.png">
     <link rel="stylesheet" type="text/css" href="./stylesheets/reset.css">
@@ -16,19 +16,30 @@
   <body>
     <div class="title">
       <h1 class="title-h">H</h1><h1>omenum Revelio</h1>
-    </div>
-    <div class="instructions">
-      <p>Click on a square to open it</p>
-      <p>Within each square is either a number or a Death Eater</p>
-
-      <p>The number indicates how many Death Eaters are adjacent to that square (i.e. in the 8 squares surrounding it)</p>
-      <p>Right click on a square to place a House banner on it, thus marking it as a possible Death Eater (right click again to remove the banner)</p>
-
-      <p>If you click on a Death Eater, you lose the game</p>
-      <p>The goal is to open all non-Death Eater squares, and you win the game</p>
-    </div>
-    <div class="game-content">
+    </div><div class="game-content">
       <canvas id="canvas"></canvas>
+      <div class="instructions">
+        <h3>How To Play</h3>
+        <p class="line-1">Click on a square to open it</p>
+
+        <div class="line-2">
+          <p class="line-2-text">Within each square is either a number or a Death Eater</p>
+          <p class="number">3</p>
+          <p>OR</p>
+          <img class="death-eater" src="./images/death_eater.png"/>
+        </div>
+
+        <p class="line-3">The number indicates how many Death Eaters are adjacent to that square (i.e. in the 8 squares surrounding it)</p>
+
+        <div class="line-4">
+          <p class="line-4-text">Right click on a square to place a House banner on it and mark it as a possible Death Eater (right click again to remove it)</p>
+          <img class="place-banners" src="./images/place_banners.png" />
+        </div>
+
+        <p class="line-5">If you click on a Death Eater, you lose the game</p>
+
+        <p class="line-6">The goal is to open all non-Death Eater squares, and you win the game</p>
+      </div>
     </div>
   </body>
 </html>
