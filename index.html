@@ -5,7 +5,10 @@
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
 
-    <!-- <script type="text/javascript" src="bundle.js"></script> -->
+    <script type="text/javascript" src="bundle.js"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
     <link rel="shortcut icon" type="image/png" href="./images/homenum_revelio_logo.png">
     <link rel="stylesheet" type="text/css" href="./stylesheets/reset.css">
@@ -18,27 +21,36 @@
       <h1 class="title-h">H</h1><h1>omenum Revelio</h1>
     </div><div class="game-content">
       <canvas id="canvas"></canvas>
-      <div class="instructions">
-        <h3>How To Play</h3>
-        <p class="line-1">Click on a square to open it</p>
+      <div class="right-pane">
+        <div class="todo"></div>
+        <div class="instructions">
+          <h3>How To Play</h3>
+          <p class="line-1">Click on a square to open it</p>
 
-        <div class="line-2">
-          <p class="line-2-text">Within each square is either a number or a Death Eater</p>
-          <p class="number">3</p>
-          <p>OR</p>
-          <img class="death-eater" src="./images/death_eater.png"/>
+          <div class="line-2">
+            <p class="line-2-text">Within each square is either a number or a Death Eater</p>
+            <p class="number">3</p>
+            <p>OR</p>
+            <img class="death-eater" src="./images/death_eater.png"/>
+          </div>
+
+          <p class="line-3">The number indicates how many Death Eaters are adjacent to that square (i.e. in the 8 squares surrounding it)</p>
+
+          <div class="line-4">
+            <p class="line-4-text">Right click on a square to place a House banner on it and mark it as a possible Death Eater (right click again to remove it)</p>
+            <img class="place-banners" src="./images/place_banners.png" />
+          </div>
+
+          <p class="line-5">If you click on a Death Eater, you lose the game</p>
+
+          <p class="line-6">The goal is to open all non-Death Eater squares, and you win the game</p>
         </div>
 
-        <p class="line-3">The number indicates how many Death Eaters are adjacent to that square (i.e. in the 8 squares surrounding it)</p>
-
-        <div class="line-4">
-          <p class="line-4-text">Right click on a square to place a House banner on it and mark it as a possible Death Eater (right click again to remove it)</p>
-          <img class="place-banners" src="./images/place_banners.png" />
+        <div class="links">
+          <a href="https://github.com/VivDeG"><i class="fab fa-github"></i></a>
+          <a href="https://vivienedeg.com/"><i class="far fa-address-card"></i></a>
+          <a href="https://www.linkedin.com/in/vivienedeg/"><i class="fab fa-linkedin"></i></a>
         </div>
-
-        <p class="line-5">If you click on a Death Eater, you lose the game</p>
-
-        <p class="line-6">The goal is to open all non-Death Eater squares, and you win the game</p>
       </div>
     </div>
   </body>
