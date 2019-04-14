@@ -67,5 +67,6 @@ animateOpen(c) {
 ![All Death Eaters revealed when player loses](https://github.com/VivDeG/HomenumRevelio/blob/master/images/sample_game_over.png)
 
 ### Features for the Future
-+ Implement timer and score; when a player wins, the count on the timer will be the player's score
-+ Add music and sounds for a better Harry Potter-like aesthetic
++ Reset button to start a new game
++ Timer and score; when a player wins, the count on the timer will be the player's score
++ Music and sounds for a better Harry Potter-like aesthetic
